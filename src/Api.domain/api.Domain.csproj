@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Users\**" />
+    <EmbeddedResource Remove="Users\**" />
+    <None Remove="Users\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.1.35" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.20" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
+    <PackageReference Include="Z.Dapper.Plus" Version="7.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="api.DapperService">
+      <HintPath>..\..\..\api.DapperService\bin\Debug\net7.0\api.DapperService.dll</HintPath>
+    </Reference>
+    <Reference Include="UtilityProj">
+      <HintPath>..\..\..\UtilityProj\bin\Debug\net7.0\UtilityProj.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>
