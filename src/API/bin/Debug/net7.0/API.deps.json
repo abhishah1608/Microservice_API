@@ -10,6 +10,7 @@
         "dependencies": {
           "Dapper": "2.1.35",
           "FluentValidation.AspNetCore": "11.3.0",
+          "Microsoft.AspNet.Cors": "5.3.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.20",
           "Microsoft.Extensions.Http": "8.0.0",
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.17.0",
@@ -65,6 +66,14 @@
           "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.dll": {
             "assemblyVersion": "11.0.0.0",
             "fileVersion": "11.5.1.0"
+          }
+        }
+      },
+      "Microsoft.AspNet.Cors/5.3.0": {
+        "runtime": {
+          "lib/net45/System.Web.Cors.dll": {
+            "assemblyVersion": "5.3.0.0",
+            "fileVersion": "5.3.61130.707"
           }
         }
       },
@@ -519,6 +528,13 @@
       "sha512": "sha512-iWM0LS1MDYX06pcjMEQKqHirl2zkjHlNV23mEJSoR1IZI7KQmTa0RcTtGEJpj5+iHvBCfrzP2mYKM4FtRKVb+A==",
       "path": "fluentvalidation.dependencyinjectionextensions/11.5.1",
       "hashPath": "fluentvalidation.dependencyinjectionextensions.11.5.1.nupkg.sha512"
+    },
+    "Microsoft.AspNet.Cors/5.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-GmnL9NNGTheEcUVSzjnFaMaCEIwWdvP6mBed1ux/7M0D2yc+uzZ6UN/gAA5mva1BZmah0G+F+MVaPkoValWpmQ==",
+      "path": "microsoft.aspnet.cors/5.3.0",
+      "hashPath": "microsoft.aspnet.cors.5.3.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Authentication.JwtBearer/7.0.20": {
       "type": "package",

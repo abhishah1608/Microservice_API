@@ -1,11 +1,9 @@
 ﻿using api.Application.Services;
 using api.Domain.Entities;
 using API.Extensions;
-using FluentValidation;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Template.API.Controllers
+namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -37,6 +35,7 @@ namespace Template.API.Controllers
             }
             catch (Exception ex)
             {
+                ModelState.AddModelError("AddNewUser", ex.Message.ToString());
                 string msg = ex.Message;
                 return BadRequest(msg);
             }

@@ -1,9 +1,9 @@
-﻿namespace Template.API.Validations
+﻿namespace API.Validations
 {
     using api.Domain.Entities;
     using FluentValidation;
 
-    public class UserValidator : AbstractValidator<User> 
+    public class UserValidator : AbstractValidator<User>
     {
         public UserValidator()
         {
@@ -31,7 +31,7 @@
         {
             bool isValid = false;
 
-            if (password.Any(Char.IsUpper) && password.Any(Char.IsLower) && password.Any(Char.IsDigit) && password.Any(ch => !char.IsLetterOrDigit(ch)) && !password.Any(Char.IsWhiteSpace))
+            if (password.Any(char.IsUpper) && password.Any(char.IsLower) && password.Any(char.IsDigit) && password.Any(ch => !char.IsLetterOrDigit(ch)) && !password.Any(char.IsWhiteSpace))
             {
                 isValid = true;
             }
@@ -42,7 +42,7 @@
         public bool ValidateRole(string role)
         {
             bool ret = false;
-            if(role.ToLower() == "admin" || role.ToLower() == "student" || role.ToLower() == "instructor")
+            if (role.ToLower() == "admin" || role.ToLower() == "student" || role.ToLower() == "instructor")
             {
                 ret = true;
             }

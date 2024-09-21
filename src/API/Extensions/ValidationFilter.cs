@@ -3,7 +3,6 @@ using api.Domain.Entities.Error;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Linq;
-using Template.API.Extensions;
 
 namespace API.Extensions
 {
@@ -20,7 +19,7 @@ namespace API.Extensions
             if (!context.ModelState.IsValid)
             {
                 List<APIErrorDetails> list = _dataCacheService.lstAPIErrorDetails;
-
+                bool isServerError = false; 
                 var errors = context.ModelState
                     .Where(x => x.Value.Errors.Count > 0)
                     .SelectMany(x => x.Value.Errors)
@@ -32,11 +31,15 @@ namespace API.Extensions
                             details.ErrorDescription = e.ErrorDescription;
                             details.ErrorCode = e.ErrorCode;
                         }
+                        else
+                        {
+                            details.ErrorDescription = "Server Error";
+                            isServerError = true;
+                        }
                         return details;
-                    })
-                    .ToList();
+                    }).ToList();
                 ErrorDetails error = new ErrorDetails();
-                error.StatusCode = 400;
+                error.StatusCode = isServerError ? 500 : 400;
                 error.errorDetails = errors;
                 var errorResponse = error;
                 context.Result = new BadRequestObjectResult(errorResponse);
@@ -44,6 +47,35 @@ namespace API.Extensions
         }
 
         public void OnActionExecuted(ActionExecutedContext context) {
+            if (!context.ModelState.IsValid)
+            {
+                List<APIErrorDetails> list = _dataCacheService.lstAPIErrorDetails;
+                bool isServerError = false;
+                var errors = context.ModelState
+                    .Where(x => x.Value.Errors.Count > 0)
+                    .SelectMany(x => x.Value.Errors)
+                    .Select(error => {
+                        var e = list.Where(p => error.ErrorMessage.ToLower().Contains(p.ErrorDescription.ToLower())).FirstOrDefault();
+                        APIErrorDetails details = new APIErrorDetails();
+                        if (e != null)
+                        {
+                            details.ErrorDescription = e.ErrorDescription;
+                            details.ErrorCode = e.ErrorCode;
+                        }
+                        else
+                        {
+                            isServerError = true;
+                            details.ErrorDescription = "server Error";
+                        }
+                        return details;
+                    })
+                    .ToList();
+                ErrorDetails error = new ErrorDetails();
+                error.StatusCode = isServerError ? 500 : 400;
+                error.errorDetails = errors;
+                var errorResponse = error;
+                context.Result = new BadRequestObjectResult(errorResponse);
+            }
         }
     }
 
