@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "0fxluQyr7wdgVbqz9OoMY53CrW3h7Fo/eke53ByYdIAzYAuTRJzAXsbb4eN5sikGWUkt/lZiviMvUvP0ely/WA==",
+  "dgSpecHash": "rNuTQmgu1WOHTSjc9YtuYNh2MkentrjJL38J9xc/iddaWuK8rdMG8A75hQjAl80WJ+pvMJ5xOWnwlfig2HsvQQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Lenovo\\source\\repos\\Microservice_API\\src\\API\\API.csproj",
   "expectedPackageFiles": [
@@ -11,7 +11,12 @@
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\7.0.20\\microsoft.aspnetcore.authentication.jwtbearer.7.0.20.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\8.0.0\\microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",
-    "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\2.1.0\\microsoft.extensions.dependencyinjection.abstractions.2.1.0.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\8.0.0\\microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.extensions.http\\8.0.0\\microsoft.extensions.http.8.0.0.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.extensions.logging\\8.0.0\\microsoft.extensions.logging.8.0.0.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.0\\microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.extensions.options\\8.0.0\\microsoft.extensions.options.8.0.0.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.identitymodel.abstractions\\8.0.2\\microsoft.identitymodel.abstractions.8.0.2.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\8.0.2\\microsoft.identitymodel.jsonwebtokens.8.0.2.nupkg.sha512",

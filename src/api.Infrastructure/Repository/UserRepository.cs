@@ -36,12 +36,36 @@ namespace api.Infrastructure.Repository
                 string salt = (!string.IsNullOrEmpty(user.FirstName) ? user.FirstName : "") + (!string.IsNullOrEmpty(user.LastName) ? user.LastName : string.Empty);
                 user.PasswordHash = HashGenerator.GenerateHashpassword(user.PasswordHash, salt);
                 user.CreatedAt = DateTime.UtcNow;
-                sb.Append(@"INSERT INTO Users 
-                    (FirstName, LastName, Email, PasswordHash, Role, CreatedAt, IsActive, UserName)
-                    VALUES 
-                    (@FirstName, @LastName, @Email, @PasswordHash, @Role, @CreatedAt, @IsActive, @UserName)");
-
-               await dbservice.ExecuteAsync(sb.ToString(), user);
+                sb.Append("IF Exists(SELECT 1 FROM Users WITH(NOLOCK) WHERE Email = @Email) ");
+                sb.AppendLine();
+                sb.Append("BEGIN ");
+                sb.AppendLine();
+                sb.Append("    RAISERROR('Email Address is already used, please enter another Email Address', 16, 1); ");
+                sb.AppendLine();
+                sb.Append("END ");
+                sb.AppendLine();
+                sb.Append("ELSE IF Exists(SELECT 1 FROM Users WITH(NOLOCK) WHERE UserName = @UserName) ");
+                sb.AppendLine();
+                sb.Append("BEGIN ");
+                sb.AppendLine();
+                sb.Append("    RAISERROR('UserName is already used, please enter another username', 16, 1); ");
+                sb.AppendLine();
+                sb.Append("END ");
+                sb.AppendLine();
+                sb.Append("ELSE ");
+                sb.AppendLine();
+                sb.Append("BEGIN ");
+                sb.AppendLine();
+                sb.Append("    INSERT INTO Users ");
+                sb.AppendLine();
+                sb.Append("        (FirstName, LastName, Email, PasswordHash, Role, CreatedAt, IsActive, UserName) ");
+                sb.AppendLine();
+                sb.Append("    VALUES ");
+                sb.AppendLine();
+                sb.Append("        (@FirstName, @LastName, @Email, @PasswordHash, @Role, @CreatedAt, @IsActive, @UserName) ");
+                sb.AppendLine();
+                sb.Append("END ");
+                await dbservice.ExecuteAsync(sb.ToString(), user);
             }
             return user;
         }

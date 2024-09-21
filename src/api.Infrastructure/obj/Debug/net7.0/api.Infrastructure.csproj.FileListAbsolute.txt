@@ -36,3 +36,5 @@ C:\Users\Lenovo\source\repos\Microservice_API\src\api.Infrastructure\obj\Debug\n
 C:\Users\Lenovo\source\repos\Microservice_API\src\api.Infrastructure\obj\Debug\net7.0\refint\api.Infrastructure.dll
 C:\Users\Lenovo\source\repos\Microservice_API\src\api.Infrastructure\obj\Debug\net7.0\api.Infrastructure.pdb
 C:\Users\Lenovo\source\repos\Microservice_API\src\api.Infrastructure\obj\Debug\net7.0\ref\api.Infrastructure.dll
+C:\Users\Lenovo\source\repos\Microservice_API\src\api.Infrastructure\bin\Debug\net7.0\api.Application.dll
+C:\Users\Lenovo\source\repos\Microservice_API\src\api.Infrastructure\bin\Debug\net7.0\api.Application.pdb

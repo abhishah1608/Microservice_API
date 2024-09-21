@@ -401,6 +401,25 @@
           }
         }
       },
+      "api.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Dapper": "2.1.35",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.20",
+          "Newtonsoft.Json": "13.0.3",
+          "System.Data.SqlClient": "4.8.6",
+          "System.IdentityModel.Tokens.Jwt": "8.0.2",
+          "Z.Dapper.Plus": "7.4.1",
+          "api.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/api.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/api.Application.dll": {}
+        }
+      },
       "api.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
@@ -1121,6 +1140,11 @@
         "z.dapper.plus.nuspec"
       ]
     },
+    "api.Application/1.0.0": {
+      "type": "project",
+      "path": "../api.Application/api.Application.csproj",
+      "msbuildProject": "../api.Application/api.Application.csproj"
+    },
     "api.Domain/1.0.0": {
       "type": "project",
       "path": "../Api.domain/api.Domain.csproj",
@@ -1136,6 +1160,7 @@
       "System.Data.SqlClient >= 4.8.6",
       "System.IdentityModel.Tokens.Jwt >= 8.0.2",
       "Z.Dapper.Plus >= 7.4.1",
+      "api.Application >= 1.0.0",
       "api.Domain >= 1.0.0"
     ]
   },
@@ -1171,6 +1196,9 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
+            "C:\\Users\\Lenovo\\source\\repos\\Microservice_API\\src\\api.Application\\api.Application.csproj": {
+              "projectPath": "C:\\Users\\Lenovo\\source\\repos\\Microservice_API\\src\\api.Application\\api.Application.csproj"
+            },
             "C:\\Users\\Lenovo\\source\\repos\\Microservice_API\\src\\Api.domain\\api.Domain.csproj": {
               "projectPath": "C:\\Users\\Lenovo\\source\\repos\\Microservice_API\\src\\Api.domain\\api.Domain.csproj"
             }

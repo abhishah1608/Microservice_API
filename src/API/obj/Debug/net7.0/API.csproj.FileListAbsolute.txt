@@ -68,3 +68,9 @@ C:\Users\Lenovo\source\repos\Microservice_API\src\API\obj\Debug\net7.0\refint\AP
 C:\Users\Lenovo\source\repos\Microservice_API\src\API\obj\Debug\net7.0\API.pdb
 C:\Users\Lenovo\source\repos\Microservice_API\src\API\obj\Debug\net7.0\API.genruntimeconfig.cache
 C:\Users\Lenovo\source\repos\Microservice_API\src\API\obj\Debug\net7.0\ref\API.dll
+C:\Users\Lenovo\source\repos\Microservice_API\src\API\bin\Debug\net7.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Lenovo\source\repos\Microservice_API\src\API\bin\Debug\net7.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Lenovo\source\repos\Microservice_API\src\API\bin\Debug\net7.0\Microsoft.Extensions.Http.dll
+C:\Users\Lenovo\source\repos\Microservice_API\src\API\bin\Debug\net7.0\Microsoft.Extensions.Logging.dll
+C:\Users\Lenovo\source\repos\Microservice_API\src\API\bin\Debug\net7.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Lenovo\source\repos\Microservice_API\src\API\bin\Debug\net7.0\Microsoft.Extensions.Options.dll

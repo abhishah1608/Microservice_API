@@ -15,6 +15,7 @@
           "System.Data.SqlClient": "4.8.6",
           "System.IdentityModel.Tokens.Jwt": "8.0.2",
           "Z.Dapper.Plus": "7.4.1",
+          "api.Application": "1.0.0",
           "api.Domain": "1.0.0",
           "api.DapperService": "1.0.0.0",
           "UtilityProj": "1.0.0.0"
@@ -271,6 +272,20 @@
           }
         }
       },
+      "api.Application/1.0.0": {
+        "dependencies": {
+          "Dapper": "2.1.35",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.20",
+          "Newtonsoft.Json": "13.0.3",
+          "System.Data.SqlClient": "4.8.6",
+          "System.IdentityModel.Tokens.Jwt": "8.0.2",
+          "Z.Dapper.Plus": "7.4.1",
+          "api.Domain": "1.0.0"
+        },
+        "runtime": {
+          "api.Application.dll": {}
+        }
+      },
       "api.Domain/1.0.0": {
         "dependencies": {
           "Dapper": "2.1.35",
@@ -481,6 +496,11 @@
       "sha512": "sha512-EtasYQV96wLpeLVQCcQo0ftFrCoBgZKF4vrYtRAmI6D38L1Q3J19rXMr+/NDZGXDixLjnUMfn9uADV1Z+lTvTA==",
       "path": "z.dapper.plus/7.4.1",
       "hashPath": "z.dapper.plus.7.4.1.nupkg.sha512"
+    },
+    "api.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "api.Domain/1.0.0": {
       "type": "project",
