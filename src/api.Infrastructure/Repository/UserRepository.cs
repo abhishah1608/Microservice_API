@@ -3,17 +3,21 @@ using api.Domain.Interfaces;
 using System.Text;
 using UtilityProj;
 using System.Data.SqlClient;
+using Dapper;
+using Microsoft.Extensions.Configuration;
 
 namespace api.Infrastructure.Repository
 {
     public class UserRepository : IUserRepository
     {
         private readonly SqlConnection _dbconnection = null;
-           
+        
+        private readonly IConfiguration _configuration = null;
 
-        public UserRepository(SqlConnection dbConnection)
+        public UserRepository(SqlConnection dbConnection, IConfiguration configuration)
         {
             _dbconnection = dbConnection;
+            _configuration = configuration;
         }
 
         /// <summary>
@@ -85,7 +89,37 @@ namespace api.Infrastructure.Repository
 
         public async Task<User> GetUserByNameAndPassword(string username, string password)
         {
-            throw new NotImplementedException();
+            StringBuilder sb = new StringBuilder();
+            using (DapperService.DapperService dbservice = new DapperService.DapperService(_dbconnection))
+            {
+                sb.Append(@"SELECT * FROM USERS WITH(NOLOCK) WHERE USERNAME= @username AND IsActive = 1");
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@username", username);
+                User user = await dbservice.QuerySingleOrDefaultAsync<User>(sb.ToString(), parameters);
+                if(user != null)
+                {
+                    string salt = (!string.IsNullOrEmpty(user.FirstName) ? user.FirstName : "") + (!string.IsNullOrEmpty(user.LastName) ? user.LastName : string.Empty);
+                    string PasswordHash = HashGenerator.GenerateHashpassword(password, salt);
+                    // user is available
+                    if(user.PasswordHash == PasswordHash && user.IsActive == 1)
+                    {
+                        string jwtkey = _configuration["JwtToken:key"].ToString();
+                        JwtTokenGenerator jwtTokenGenerator = new JwtTokenGenerator(jwtkey, "Online_Course_Admin", "Online_Course_Users");
+                        string token = jwtTokenGenerator.GenerateToken(username, user.Role);
+                        user.Token = token;
+                        return user;
+                    }
+                    else
+                    {
+                        throw new Exception("Please enter the correct password for the user");
+                    }
+
+                }
+                else
+                {
+                    throw new Exception("Please enter the correct username");
+                }
+            }
         }
     }
 }

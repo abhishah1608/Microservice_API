@@ -1,8 +1,8 @@
-﻿namespace API.Validations
-{
-    using api.Domain.Entities;
-    using FluentValidation;
+﻿using api.Domain.Entities;
+using FluentValidation;
 
+namespace api.Application.Validators
+{
     public class UserValidator : AbstractValidator<User>
     {
         public UserValidator()
@@ -42,9 +42,12 @@
         public bool ValidateRole(string role)
         {
             bool ret = false;
-            if (role.ToLower() == "admin" || role.ToLower() == "student" || role.ToLower() == "instructor")
+            if (role != null)
             {
-                ret = true;
+                if (role.ToLower() == "admin" || role.ToLower() == "student" || role.ToLower() == "instructor")
+                {
+                    ret = true;
+                }
             }
             return ret;
         }

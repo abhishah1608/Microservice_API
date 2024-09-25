@@ -7,7 +7,9 @@ using API.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using api.Application.interfaces;
 using System.Text.Json.Serialization;
-using API.Validations;
+using api.Application.Validators;
+using Microsoft.AspNetCore.Rewrite;
+using Microsoft.OpenApi.Models;
 
 internal class Program
 {
@@ -32,8 +34,6 @@ internal class Program
         builder.Services.AddScoped(sp =>
             new SqlConnection(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-        // Add HttpClient service
-        builder.Services.AddHttpClient<IApiService, ApiService>();
 
         // Register the data cache service as a singleton
         builder.Services.AddSingleton<IDataCacheService, DataCacheService>();
@@ -51,8 +51,8 @@ internal class Program
                     // You can allow any specific origins, methods, and headers
                     //builder.WithOrigins("https://example.com", "http://localhost:4200") // Specify the allowed origins
                     builder.AllowAnyOrigin()
-             .AllowAnyHeader()   // Allow any headers (or you can restrict it)
-            .AllowAnyMethod();  // Allow any HTTP methods (GET, POST, etc.)
+                    .AllowAnyHeader()   // Allow any headers (or you can restrict it)
+                    .AllowAnyMethod();  // Allow any HTTP methods (GET, POST, etc.)
                 });
         });
 
@@ -78,15 +78,50 @@ internal class Program
         // Add fluent API Validation on API request body.
         builder.Services.AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<UserValidator>());
 
+        builder.Services.AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<UserLoginValidator>());
+
         // Add list of services.
         builder.Services.AddScoped<UserService>();
         builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+        // Add HttpClient service
+        builder.Services.AddHttpClient<IApiRepository, ApiRepository>();
+
 
         // Add swagger: Production environment does not add swagger, otherwise add swagger on DEV and stagging environment.
         if (envfile != "prod")
         {
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            // builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+
+                c.EnableAnnotations();
+
+                // Configure JWT Bearer Token in Swagger
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    In = ParameterLocation.Header,
+                    Description = "Please enter your JWT with the prefix 'Bearer '",
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey
+                });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            new string[] {}
+        }
+    });
+            });
         }
 
         var app = builder.Build();
@@ -99,6 +134,8 @@ internal class Program
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
+
+            app.UseRewriter(new RewriteOptions().AddRedirect("^$", "swagger/index.html"));
         }
 
         app.UseCors("AllowSpecificOrigins");

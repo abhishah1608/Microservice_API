@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace api.Application.interfaces
+namespace api.Domain.Interfaces
 {
-    public interface IApiService
+    public interface IApiRepository
     {
-        Task<List<APIErrorDetails>> GetDataAsync();
+        public Task<List<APIErrorDetails>> GetAPIErrorListAsync();
     }
 }

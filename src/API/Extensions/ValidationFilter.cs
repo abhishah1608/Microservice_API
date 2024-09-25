@@ -2,10 +2,12 @@
 using api.Domain.Entities.Error;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using System.Linq;
 
 namespace API.Extensions
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ValidationFilter : IActionFilter
     {
         private readonly IDataCacheService _dataCacheService; 
@@ -24,7 +26,7 @@ namespace API.Extensions
                     .Where(x => x.Value.Errors.Count > 0)
                     .SelectMany(x => x.Value.Errors)
                     .Select(error => {
-                        var e = list.Where(p => p.ErrorDescription?.ToLower() == error.ErrorMessage.ToLower()).FirstOrDefault();
+                        var e = list.Where(p => error.ErrorMessage.ToLower().Contains(p.ErrorDescription.ToLower())).FirstOrDefault();
                         APIErrorDetails details = new APIErrorDetails();
                         if(e != null)
                         {
@@ -40,7 +42,9 @@ namespace API.Extensions
                     }).ToList();
                 ErrorDetails error = new ErrorDetails();
                 error.StatusCode = isServerError ? 500 : 400;
-                error.errorDetails = errors;
+                var uniqueErrors = errors.DistinctBy(e => e.ErrorCode).ToList();
+
+                error.errorDetails = uniqueErrors;
                 var errorResponse = error;
                 context.Result = new BadRequestObjectResult(errorResponse);
             }
@@ -72,7 +76,8 @@ namespace API.Extensions
                     .ToList();
                 ErrorDetails error = new ErrorDetails();
                 error.StatusCode = isServerError ? 500 : 400;
-                error.errorDetails = errors;
+                var uniqueErrors = errors.DistinctBy(e => e.ErrorCode).ToList();
+                error.errorDetails = uniqueErrors;
                 var errorResponse = error;
                 context.Result = new BadRequestObjectResult(errorResponse);
             }

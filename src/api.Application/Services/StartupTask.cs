@@ -11,12 +11,11 @@ namespace api.Application.Services
     public class StartupTask : IHostedService
     {
         private readonly IDataCacheService _dataCacheService;
-        private readonly IApiService _apiService;
+        
 
-        public StartupTask(IDataCacheService dataCacheService, IApiService apiService)
+        public StartupTask(IDataCacheService dataCacheService)
         {
             _dataCacheService = dataCacheService;
-            _apiService = apiService;
         }
 
         public async Task StartAsync(CancellationToken cancellationToken)

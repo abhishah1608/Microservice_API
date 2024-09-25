@@ -75,3 +75,4 @@ C:\Users\Lenovo\source\repos\Microservice_API\src\API\bin\Debug\net7.0\Microsoft
 C:\Users\Lenovo\source\repos\Microservice_API\src\API\bin\Debug\net7.0\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\Lenovo\source\repos\Microservice_API\src\API\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
 C:\Users\Lenovo\source\repos\Microservice_API\src\API\bin\Debug\net7.0\System.Web.Cors.dll
+C:\Users\Lenovo\source\repos\Microservice_API\src\API\bin\Debug\net7.0\Swashbuckle.AspNetCore.Annotations.dll

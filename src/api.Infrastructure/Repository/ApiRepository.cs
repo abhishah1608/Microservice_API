@@ -1,27 +1,22 @@
-﻿using api.Application.interfaces;
-using api.Domain.Entities.Error;
+﻿using api.Domain.Entities.Error;
+using api.Domain.Interfaces;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace api.Application.Services
+namespace api.Infrastructure.Repository
 {
-    public class ApiService : IApiService
+    public class ApiRepository : IApiRepository
     {
         private readonly HttpClient _httpClient;
 
         private readonly IConfiguration _configuration;
 
-        public ApiService(HttpClient httpClient, IConfiguration configuration)
+        public ApiRepository(HttpClient httpClient, IConfiguration configuration)
         {
             _httpClient = httpClient;
             _configuration = configuration;
         }
 
-        public async Task<List<APIErrorDetails>> GetDataAsync()
+        public async Task<List<APIErrorDetails>> GetAPIErrorListAsync()
         {
             string url = _configuration["Externalmicroservices:DistributedService"];
             url = url + "api/ApiError/GetCache?key=APIErrorDetails";
@@ -31,7 +26,6 @@ namespace api.Application.Services
             var content = await response.Content.ReadAsStringAsync();
             return JsonHelper.JsonToList<APIErrorDetails>(content);
         }
-
 
     }
 }
