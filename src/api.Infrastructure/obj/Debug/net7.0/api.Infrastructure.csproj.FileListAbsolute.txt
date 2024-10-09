@@ -24,8 +24,6 @@ C:\Users\Lenovo\source\repos\Microservice_API\src\api.Infrastructure\bin\Debug\n
 C:\Users\Lenovo\source\repos\Microservice_API\src\api.Infrastructure\bin\Debug\net7.0\api.Domain.dll
 C:\Users\Lenovo\source\repos\Microservice_API\src\api.Infrastructure\bin\Debug\net7.0\UtilityProj.dll
 C:\Users\Lenovo\source\repos\Microservice_API\src\api.Infrastructure\bin\Debug\net7.0\api.Domain.pdb
-C:\Users\Lenovo\source\repos\Microservice_API\src\api.Infrastructure\bin\Debug\net7.0\api.DapperService.pdb
-C:\Users\Lenovo\source\repos\Microservice_API\src\api.Infrastructure\bin\Debug\net7.0\UtilityProj.pdb
 C:\Users\Lenovo\source\repos\Microservice_API\src\api.Infrastructure\obj\Debug\net7.0\api.Infrastructure.csproj.AssemblyReference.cache
 C:\Users\Lenovo\source\repos\Microservice_API\src\api.Infrastructure\obj\Debug\net7.0\api.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Lenovo\source\repos\Microservice_API\src\api.Infrastructure\obj\Debug\net7.0\api.Infrastructure.AssemblyInfoInputs.cache

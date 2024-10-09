@@ -23,10 +23,10 @@
 
   <ItemGroup>
     <Reference Include="api.DapperService">
-      <HintPath>..\..\..\api.DapperService\bin\Debug\net7.0\api.DapperService.dll</HintPath>
+      <HintPath>..\libs\api.DapperService.dll</HintPath>
     </Reference>
     <Reference Include="UtilityProj">
-      <HintPath>..\..\..\UtilityProj\bin\Debug\net7.0\UtilityProj.dll</HintPath>
+      <HintPath>..\libs\UtilityProj.dll</HintPath>
     </Reference>
   </ItemGroup>
 

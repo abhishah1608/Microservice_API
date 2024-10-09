@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>60f1f9a0-a4b8-4f53-83c0-72adc65b5ee3</UserSecretsId>
-    <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>.</DockerfileContext>
   </PropertyGroup>
 
@@ -31,10 +31,10 @@
 
   <ItemGroup>
     <Reference Include="api.DapperService">
-      <HintPath>..\..\..\api.DapperService\bin\Debug\net7.0\api.DapperService.dll</HintPath>
+      <HintPath>..\libs\api.DapperService.dll</HintPath>
     </Reference>
     <Reference Include="UtilityProj">
-      <HintPath>..\..\..\UtilityProj\bin\Debug\net7.0\UtilityProj.dll</HintPath>
+      <HintPath>..\libs\UtilityProj.dll</HintPath>
     </Reference>
   </ItemGroup>
 

@@ -18,8 +18,9 @@ internal class Program
         var builder = WebApplication.CreateBuilder(args);
 
         // Add Config folder.
-        string configPath = Directory.GetCurrentDirectory() + "\\" + "Config";
+        string configPath = Directory.GetCurrentDirectory() + "//" + "Config";
 
+        //string configPath = Directory.GetCurrentDirectory() + "\\" + "Config";
 
         string envfile = builder.Environment.EnvironmentName == "Development" ? "dev" : builder.Environment.EnvironmentName == "Staging" ? "stag" : "prod";
 
