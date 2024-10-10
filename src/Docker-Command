@@ -1,0 +1,5 @@
+# build dcoker image file.
+docker build -t onlinecourseapi:1.0 .
+
+# create and run container using docker image for Various envrionment.
+docker run -d -p 8062:80 --name onlinecourseapi-user-container_1 -e ASPNETCORE_ENVIRONMENT=Development onlinecourseapi-user:1.0
