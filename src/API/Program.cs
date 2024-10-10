@@ -15,10 +15,21 @@ internal class Program
 {
     private static void Main(string[] args)
     {
+        
         var builder = WebApplication.CreateBuilder(args);
 
         // Add Config folder.
         string configPath = Directory.GetCurrentDirectory() + "//" + "Config";
+
+        // Configure Kestrel for HTTPS with SSL certificates
+        builder.WebHost.ConfigureKestrel(serverOptions =>
+        {
+            // Use HTTPS with the certificate and key provided
+            serverOptions.ListenAnyIP(443, listenOptions =>
+            {
+                listenOptions.UseHttps("/app/Certs/mycert.pfx", "Krishna123@."); // Adjust paths as necessary
+            });
+        });
 
         //string configPath = Directory.GetCurrentDirectory() + "\\" + "Config";
 
@@ -82,6 +93,7 @@ internal class Program
         builder.Services.AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<UserLoginValidator>());
 
         // Add list of services.
+        // list of all services.
         builder.Services.AddScoped<UserService>();
         builder.Services.AddScoped<IUserRepository, UserRepository>();
 
@@ -145,4 +157,5 @@ internal class Program
 
         app.Run();
     }
+
 }
