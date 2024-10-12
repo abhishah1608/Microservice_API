@@ -3,3 +3,10 @@ docker build -t onlinecourseapi:1.0 .
 
 # create and run container using docker image for Various envrionment.
 docker run -d -p 8062:80 --name onlinecourseapi-user-container_1 -e ASPNETCORE_ENVIRONMENT=Development onlinecourseapi-user:1.0
+
+#changes
+# here dcoker volume is created, here entire path of windows folder which need to be bound is to be added with (:) path of Application on Docker environment. 
+docker run -d -p 443:443 --name onlinecourseapi-user-container_1 -v C:\Users\Lenovo\source\repos\Microservice_API\src\certs:/app/Certs onlinecourseapi:3.0
+
+
+
