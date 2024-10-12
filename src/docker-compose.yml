@@ -1,0 +1,65 @@
+version: '3.7'
+
+# this file will run all containers without running each and every command to run containers with all different configurations:
+# only thing is to build the image and rest will be handled by the docker compose file.
+# Define a custom bridge network with a specific subnet
+networks:
+  custom_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.18.0.0/16
+
+services:
+  # Redis cache service
+  redis-cache:
+    image: redis:latest
+    container_name: redis-cache
+    networks:
+      custom_network:
+        ipv4_address: 172.18.0.2
+    ports:
+      - "6379:6379"  # Expose port 6379
+
+  # Distributed cache container
+  distributed-cache-container:
+    image: distributed-cache-service  # Replace with actual image name
+    container_name: distributed-cache-container
+    networks:
+      custom_network:
+        ipv4_address: 172.18.0.3
+    ports:
+      - "8012:80"  # Expose port 80
+    environment:  # Set environment variables for this service
+      - ASPNETCORE_ENVIRONMENT=Development  # Set ASP.NET Core environment to Development  
+
+  # Online course API container
+  online-courseapi:
+    image:  onlinecourseapi:3.0 # Specify the version 3.0
+    container_name: onlinecourseapi-container-2
+    networks:
+      custom_network:
+        ipv4_address: 172.18.0.4
+    ports:
+      - "443:443"  # Expose port 443
+    environment:  # Set environment variables for this service
+      - ASPNETCORE_ENVIRONMENT=Development  # Set ASP.NET Core environment to Development
+    volumes:
+      - C:/Users/Lenovo/source/repos/Microservice_API/src/certs:/app/Certs  # Mount from Windows to Docker
+
+    # Online course API container
+  online-course-api-gateway:
+    image:  onlinecourse-api-gateway:1.0 # Specify the version 3.0
+    container_name: onlinecourse-api-gateway-container
+    networks:
+      custom_network:
+        ipv4_address: 172.18.0.5
+    ports:
+      - "8095:443"  # Expose port 443
+    environment:  # Set environment variables for this service
+      - ASPNETCORE_ENVIRONMENT=Development  # Set ASP.NET Core environment to Development
+    volumes:
+      - C:/Users/Lenovo/source/repos/Microservice_API/src/certs:/app/Certs  # Mount from Windows to Docker
+
+
+    
