@@ -25,11 +25,8 @@ RUN dotnet restore "API/API.csproj"
 COPY . .
 
 # Create directories and copy libraries, certs, and config at once
-RUN mkdir -p /app/Config /app/libs /app/Certs && \
-    cp -R ./libs/*.dll /app/libs/ && \
-    cp -R API/Certs/mycert.key /app/Certs/ && \
-    cp -R API/Certs/mycert.crt /app/Certs/ && \
-    cp -R ./Config/* /app/Config/
+RUN mkdir -p  /app/libs && \
+    cp -R ./libs/*.dll /app/libs/
 
 # Build the application
 WORKDIR "/src/."

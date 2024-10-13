@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3.8'
 
 # this file will run all containers without running each and every command to run containers with all different configurations:
 # only thing is to build the image and rest will be handled by the docker compose file.
@@ -31,7 +31,9 @@ services:
     ports:
       - "8012:80"  # Expose port 80
     environment:  # Set environment variables for this service
-      - ASPNETCORE_ENVIRONMENT=Development  # Set ASP.NET Core environment to Development  
+      - ASPNETCORE_ENVIRONMENT=Development  # Set ASP.NET Core environment to Development
+    volumes:
+      - D:/online-Course-configurations/Distributed_Cache/Config:/app/Config  # Mount from Windows to Docker    
 
   # Online course API container
   online-courseapi:
@@ -46,6 +48,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development  # Set ASP.NET Core environment to Development
     volumes:
       - C:/Users/Lenovo/source/repos/Microservice_API/src/certs:/app/Certs  # Mount from Windows to Docker
+      - D:/online-Course-configurations/User_API/Config:/app/Config  # Mount from Windows to Docker
 
     # Online course API container
   online-course-api-gateway:
@@ -60,6 +63,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development  # Set ASP.NET Core environment to Development
     volumes:
       - C:/Users/Lenovo/source/repos/Microservice_API/src/certs:/app/Certs  # Mount from Windows to Docker
+      - D:/online-Course-configurations/ApiGateway/Config:/app/Config  # Mount from Windows to Docker
 
 
     
