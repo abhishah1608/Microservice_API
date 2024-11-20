@@ -1,4 +1,4 @@
-version: '3.8'
+version: '4.0'
 
 # this file will run all containers without running each and every command to run containers with all different configurations:
 # only thing is to build the image and rest will be handled by the docker compose file.

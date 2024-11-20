@@ -6,7 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-    [Route("api/[controller]")]
+    [ApiVersion("1.0")]
+
+    [Route("api/v{version:apiVersion}/[controller]")]
+    
     [ApiController]
     public class UserController : ControllerBase
     {
@@ -24,6 +27,7 @@ namespace API.Controllers
 
         [AllowAnonymous]
         [HttpPost]
+        [MapToApiVersion("1.0")]
         [Route("addNewUser")]
         public async Task<IActionResult> AddNewUser([FromBody] User user)
         {
@@ -43,6 +47,7 @@ namespace API.Controllers
 
         [AllowAnonymous]
         [HttpPost]
+        [MapToApiVersion("1.0")]
         [Route("login")]
         public async Task<IActionResult> Login([FromBody] UserLogin user)
         {
@@ -63,6 +68,7 @@ namespace API.Controllers
 
         
         [HttpGet]
+        [MapToApiVersion("1.0")]
         [Route("access")]
         public async Task<IActionResult> Test()
         {

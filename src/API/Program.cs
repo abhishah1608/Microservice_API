@@ -31,6 +31,20 @@ internal class Program
             });
         });
 
+        builder.Services.AddApiVersioning(options =>
+        {
+            options.ReportApiVersions = true; // Include API version in the response headers
+            options.AssumeDefaultVersionWhenUnspecified = true; // Use a default version if not specified
+            options.DefaultApiVersion = new ApiVersion(1, 0); // Set the default version to 1.0
+        });
+
+        builder.Services.AddVersionedApiExplorer(options =>
+        {
+            options.GroupNameFormat = "'v'VVV"; // Group by version (e.g., "v1")
+            options.SubstituteApiVersionInUrl = true;
+        });
+
+
         //string configPath = Directory.GetCurrentDirectory() + "\\" + "Config";
 
         string envfile = builder.Environment.EnvironmentName == "Development" ? "dev" : builder.Environment.EnvironmentName == "Staging" ? "stag" : "prod";

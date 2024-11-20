@@ -74,3 +74,6 @@ C:\Users\Lenovo\source\repos\Microservice_API\src\API\bin\Debug\net7.0\Microsoft
 C:\Users\Lenovo\source\repos\Microservice_API\src\API\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
 C:\Users\Lenovo\source\repos\Microservice_API\src\API\bin\Debug\net7.0\System.Web.Cors.dll
 C:\Users\Lenovo\source\repos\Microservice_API\src\API\bin\Debug\net7.0\Swashbuckle.AspNetCore.Annotations.dll
+C:\Users\Lenovo\source\repos\Microservice_API\src\API\bin\Debug\net7.0\web.config
+C:\Users\Lenovo\source\repos\Microservice_API\src\API\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.Versioning.dll
+C:\Users\Lenovo\source\repos\Microservice_API\src\API\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer.dll
